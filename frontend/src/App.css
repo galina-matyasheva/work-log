@@ -1,0 +1,49 @@
+.container {
+  position: relative;
+  padding: 0 16px;
+  margin: 40px auto;
+  max-width: 1000px;
+  font-family: Arial, sans-serif;
+}
+
+input {
+  padding: 6px;
+}
+
+button {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.container-header {
+  display: flex;
+  align-items: center;
+}
+
+.container-header svg:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.content-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.content-inner {
+  width: 100%;
+  min-width: 800px;
+}
+
+@media (width <= 975px) {
+  .container {
+    padding: 0 12px;
+    margin: 20px auto;
+    max-width: 100%;
+  }
+
+  .log-form,
+  .log-table {
+    width: 100%;
+    min-width: auto;
+  }
+}

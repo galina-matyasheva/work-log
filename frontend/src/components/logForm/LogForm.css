@@ -1,0 +1,16 @@
+.log-form {
+  --input-height: 38px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.log-form button {
+  align-self: flex-start;
+  height: var(--input-height);
+  padding: 0 16px;
+  cursor: pointer;
+}

@@ -1,0 +1,56 @@
+services:
+  mysql:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: construction_journal
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: root1234
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "-proot1234"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_HOST: mysql
+      DB_USER: appuser
+      DB_PASSWORD: 1234
+      DB_NAME: construction_journal
+      DB_PORT: 3306
+      PORT: 5000
+      CORS_ORIGIN: http://localhost:3000
+    ports:
+      - "5000:5000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "const http=require('http');http.get('http://localhost:5000/health',r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+      start_period: 10s
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_API_URL: http://localhost:5000
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "3000:80"
+
+volumes:
+  mysql_data:

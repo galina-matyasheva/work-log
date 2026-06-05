@@ -1,0 +1,111 @@
+.log-table-wrapper {
+  width: 100%;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow-default);
+}
+
+.log-table-container {
+  width: 100%;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.log-table-container th,
+.log-table-container td {
+  padding: 12px;
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.log-table-container thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.log-table-container thead th {
+  background: var(--color-bg-header);
+  font-weight: 600;
+}
+
+.log-table-container tbody tr:hover {
+  background: var(--color-row-hover);
+}
+
+.log-table-container td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+
+.log-table-icon-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.log-table-icon-buttons button {
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.log-table-icon-buttons button:hover {
+  background-color: var(--color-bg-hover);
+  color: var(--color-primary-hover);
+}
+
+.log-table-sort-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.log-table-sort-button svg {
+  color: var(--color-primary);
+  transition: 0.2s;
+}
+
+.log-table-sort-button svg:hover {
+  background-color: var(--color-bg-hover);
+  color: var(--color-primary-hover);
+}
+
+.log-table-container th:nth-child(1),
+.log-table-container td:nth-child(1) {
+  width: 12%;
+}
+
+.log-table-container th:nth-child(2),
+.log-table-container td:nth-child(2) {
+  width: 27%;
+}
+
+.log-table-container th:nth-child(3),
+.log-table-container td:nth-child(3) {
+  width: 13%;
+}
+
+.log-table-container th:nth-child(4),
+.log-table-container td:nth-child(4) {
+  width: 10%;
+}
+
+.log-table-container th:nth-child(5),
+.log-table-container td:nth-child(5) {
+  width: 20%;
+}
+
+.log-table-container th:nth-child(6),
+.log-table-container td:nth-child(6) {
+  width: 18%;
+}
